@@ -104,7 +104,7 @@ function handleSamplesRadioChange() {
       index = +radio.value;
     }
   }
-  data = sampled[index];x
+  data = sampled[index];
   renderData(data);
 }
 
