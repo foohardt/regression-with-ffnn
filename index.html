@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FFNN Regression</title>
+
+  <!-- Import Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- Import Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <!-- Import tfjs-vis -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+</head>
+
+<body>
+  <!-- Import the main  onchange="handleChange()"script file -->
+  <h1>Regression using Feed Forward Neural Network</h1>
+
+
+
+
+  <div id="numberOfSamples" class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Select number of samples</label>
+    <div id="numberSamplesRadio">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio5" value="0"
+          onchange="handleRadioChange()">
+        <label class="form-check-label" for="numberSamplesRadio5">5</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio10" value="1"
+          onchange="handleRadioChange()">
+        <label class="form-check-label" for="numberSamplesRadio10">10</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio20" value="2"
+          onchange="handleRadioChange()">
+        <label class="form-check-label" for="numberSamplesRadio20">20</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio50" value="3"
+          onchange="handleRadioChange()">
+        <label class="form-check-label" for="numberSamplesRadio50">50</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio100" value="4"
+          onchange="handleRadioChange()">
+        <label class="form-check-label" for="numberSamplesRadio100">100</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="hiddenLayers" class="form-label">Hidden layers</label>
+    <input type="number" class="form-control" id="hiddenLayers">
+  </div>
+  <div class="mb-3">
+    <label for="neuronsPerLayer" class="form-label">Neurons per layer</label>
+    <input type="number" class="form-control" id="neuronsPerLayer">
+  </div>
+  <div class="mb-3">
+    <label for="activationFunction" class="form-label">Activation function</label>
+    <select id="activationFunction" class="form-select">
+      <option selected>Choose activation function</option>
+      <option value="relu">Relu</option>
+      <option value="any">Any</option>
+      <option value="other">other</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" onclick="create()">Create Model</button>
+    <button class="btn btn-primary" onclick="">Underfitting</button>
+    <button class="btn btn-primary" onclick="">Overfitting</button>
+    <button class="btn btn-primary" onclick="">Best Fit</button>
+  </div>
+
+  <div class="mb-3">
+    <label for="batchSize" class="form-label">Batch Size</label>
+    <input type="number" class="form-control" id="hiddenLayers">
+  </div>
+  <div class="mb-3">
+    <label for="epochs" class="form-label">Epochs</label>
+    <input type="number" class="form-control" id="epochs">
+  </div>
+  <button class="btn btn-primary" onclick="train()">Train Model</button>
+  
+  
+  <input type="number" id="myNumber" value="2" onchange="handleChange()" />
+  <button class="btn btn-primary" onclick="test()">Test Model</button>
+
+
+  <script src="script.js"></script>
+
+</html>
