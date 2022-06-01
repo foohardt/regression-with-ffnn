@@ -96,12 +96,7 @@ for (const array of sampled) {
  * Handle user interaction
  */
 
-let number;
-function handleChange() {
-  number = document.getElementById("myNumber").value;
-}
-
-function handleRadioChange() {
+function handleSamplesRadioChange() {
   const radios = document.getElementsByName("inlineRadioOptions");
   let index;
   for (let radio of radios) {
@@ -109,8 +104,24 @@ function handleRadioChange() {
       index = +radio.value;
     }
   }
-  data = sampled[index];
+  data = sampled[index];x
   renderData(data);
+}
+
+function handleHiddenLayersChange() {
+  hiddenLayers = document.getElementById("hiddenLayers").value;
+}
+
+function handleNeuronsChange() {
+  neuronsPerLayer = document.getElementById("neuronsPerLayer").value;
+}
+
+function handleBatchSizeChange() {
+  batchSize = document.getElementById("batchSize").value;
+}
+
+function handleEpochsChange() {
+  epochs = document.getElementById("epochs").value;
 }
 
 /**
@@ -154,7 +165,14 @@ function createModel() {
   // Add a single input layer
   model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
 
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
+  for (let i = 0; i < hiddenLayers; i++) {
+    model.add(tf.layers.dense({ units: 32, activation: "relu" }));
+  }
+
+  // Add an output layer
+  model.add(tf.layers.dense({ units: 1, useBias: true }));
+
+/*   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
@@ -166,9 +184,7 @@ function createModel() {
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  // Add an output layer
-  model.add(tf.layers.dense({ units: 1, useBias: true }));
+  model.add(tf.layers.dense({ units: 32, activation: "relu" })); */
 
   return model;
 }

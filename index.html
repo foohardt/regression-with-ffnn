@@ -21,35 +21,32 @@
   <!-- Import the main  onchange="handleChange()"script file -->
   <h1>Regression using Feed Forward Neural Network</h1>
 
-
-
-
   <div id="numberOfSamples" class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Select number of samples</label>
     <div id="numberSamplesRadio">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio5" value="0"
-          onchange="handleRadioChange()">
+          onchange="handleSamplesRadioChange()">
         <label class="form-check-label" for="numberSamplesRadio5">5</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio10" value="1"
-          onchange="handleRadioChange()">
+          onchange="handleSamplesRadioChange()">
         <label class="form-check-label" for="numberSamplesRadio10">10</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio20" value="2"
-          onchange="handleRadioChange()">
+          onchange="handleSamplesRadioChange()">
         <label class="form-check-label" for="numberSamplesRadio20">20</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio50" value="3"
-          onchange="handleRadioChange()">
+          onchange="handleSamplesRadioChange()">
         <label class="form-check-label" for="numberSamplesRadio50">50</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio100" value="4"
-          onchange="handleRadioChange()">
+          onchange="handleSamplesRadioChange()">
         <label class="form-check-label" for="numberSamplesRadio100">100</label>
       </div>
     </div>
@@ -57,11 +54,11 @@
 
   <div class="mb-3">
     <label for="hiddenLayers" class="form-label">Hidden layers</label>
-    <input type="number" class="form-control" id="hiddenLayers">
+    <input type="number" class="form-control" id="hiddenLayers" onchange="handleHiddenLayersChange()">
   </div>
   <div class="mb-3">
     <label for="neuronsPerLayer" class="form-label">Neurons per layer</label>
-    <input type="number" class="form-control" id="neuronsPerLayer">
+    <input type="number" class="form-control" id="neuronsPerLayer" onchange="handleNeuronsChange()">
   </div>
   <div class="mb-3">
     <label for="activationFunction" class="form-label">Activation function</label>
@@ -81,15 +78,15 @@
 
   <div class="mb-3">
     <label for="batchSize" class="form-label">Batch Size</label>
-    <input type="number" class="form-control" id="hiddenLayers">
+    <input type="number" class="form-control" id="batchSize" onchange="handleBatchSizeChange()">
   </div>
   <div class="mb-3">
     <label for="epochs" class="form-label">Epochs</label>
-    <input type="number" class="form-control" id="epochs">
+    <input type="number" class="form-control" id="epochs" onchange="handleEpochsChange()">
   </div>
   <button class="btn btn-primary" onclick="train()">Train Model</button>
-  
-  
+
+
   <input type="number" id="myNumber" value="2" onchange="handleChange()" />
   <button class="btn btn-primary" onclick="test()">Test Model</button>
 
