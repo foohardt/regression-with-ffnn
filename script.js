@@ -4,24 +4,24 @@
 
 const UNDER_FITTING = {
   model: {
-    hiddenLayers: 4,
-    neuronsPerLayer: 8,
+    hiddenLayers: 2,
+    neuronsPerLayer: 6,
     activationFunction: "relu",
   },
   training: {
-    epochs: 20,
+    epochs: 75,
     optimizer: "adam",
   },
 };
 
 const OVER_FITTING = {
   model: {
-    hiddenLayers: 4,
-    neuronsPerLayer: 8,
+    hiddenLayers: 12,
+    neuronsPerLayer: 32,
     activationFunction: "relu",
   },
   training: {
-    epochs: 20,
+    epochs: 200,
     optimizer: "adam",
   },
 };
@@ -108,6 +108,38 @@ function handleSamplesRadioChange() {
   renderData(data);
 }
 
+function handlePresetsUnderFitting() {
+  document.getElementById("hiddenLayers").value =
+    UNDER_FITTING.model.hiddenLayers;
+  document.getElementById("neuronsPerLayer").value =
+    UNDER_FITTING.model.neuronsPerLayer;
+  document.getElementById("epochs").value = UNDER_FITTING.training.epochs;
+  hiddenLayers = UNDER_FITTING.model.hiddenLayers;
+  neuronsPerLayer = UNDER_FITTING.model.neuronsPerLayer;
+  epochs = UNDER_FITTING.training.epochs;
+}
+
+function handlePresetsOverFitting() {
+  document.getElementById("hiddenLayers").value =
+    OVER_FITTING.model.hiddenLayers;
+  document.getElementById("neuronsPerLayer").value =
+    OVER_FITTING.model.neuronsPerLayer;
+  document.getElementById("epochs").value = OVER_FITTING.training.epochs;
+  hiddenLayers = OVER_FITTING.model.hiddenLayers;
+  neuronsPerLayer = OVER_FITTING.model.neuronsPerLayer;
+  epochs = OVER_FITTING.training.epochs;
+}
+
+function handlePresetsBestFit() {
+  document.getElementById("hiddenLayers").value = BEST_FIT.model.hiddenLayers;
+  document.getElementById("neuronsPerLayer").value =
+    BEST_FIT.model.neuronsPerLayer;
+  document.getElementById("epochs").value = BEST_FIT.training.epochs;
+  hiddenLayers = BEST_FIT.model.hiddenLayers;
+  neuronsPerLayer = BEST_FIT.model.neuronsPerLayer;
+  epochs = BEST_FIT.training.epochs;
+}
+
 function handleHiddenLayersChange() {
   hiddenLayers = document.getElementById("hiddenLayers").value;
 }
@@ -172,7 +204,7 @@ function createModel() {
   // Add an output layer
   model.add(tf.layers.dense({ units: 1, useBias: true }));
 
-/*   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
+  /*   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
@@ -305,3 +337,10 @@ function test() {
 }
 
 document.addEventListener("DOMContentLoaded", tfvis.visor());
+
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]'
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+);

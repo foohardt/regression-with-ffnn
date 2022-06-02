@@ -3,8 +3,7 @@
 
 <head>
   <title>FFNN Regression</title>
-
-  <!-- Import Bootstrap CSS -->
+  <link href="./style.css" rel="stylesheet" <!-- Import Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <!-- Import Bootstrap JS Bundle -->
@@ -19,10 +18,17 @@
 
 <body>
   <!-- Import the main  onchange="handleChange()"script file -->
-  <h1>Regression using Feed Forward Neural Network</h1>
+  <h1 class="fs-2 mt-2">Regression using a Feed Forward Neural Network</h1>
 
-  <div id="numberOfSamples" class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Select number of samples</label>
+  <div id="numberOfSamples" class="section">
+    <span class="d-flex">
+      <h5>Samples</h5>
+      <button type="button" class="btn btn-outline-primary btn-sm ms-auto" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Click number of samples to visualize and select data for training and testing">
+        ?
+      </button>
+    </span>
+    <label for="exampleFormControlInput1" class="form-label">Number of samples</label>
     <div id="numberSamplesRadio">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="numberSamplesRadio5" value="0"
@@ -52,44 +58,61 @@
     </div>
   </div>
 
-  <div class="mb-3">
-    <label for="hiddenLayers" class="form-label">Hidden layers</label>
-    <input type="number" class="form-control" id="hiddenLayers" onchange="handleHiddenLayersChange()">
-  </div>
-  <div class="mb-3">
-    <label for="neuronsPerLayer" class="form-label">Neurons per layer</label>
-    <input type="number" class="form-control" id="neuronsPerLayer" onchange="handleNeuronsChange()">
-  </div>
-  <div class="mb-3">
-    <label for="activationFunction" class="form-label">Activation function</label>
-    <select id="activationFunction" class="form-select">
-      <option selected>Choose activation function</option>
-      <option value="relu">Relu</option>
-      <option value="any">Any</option>
-      <option value="other">other</option>
-    </select>
-  </div>
-  <div class="mb-3">
-    <button class="btn btn-primary" onclick="create()">Create Model</button>
-    <button class="btn btn-primary" onclick="">Underfitting</button>
-    <button class="btn btn-primary" onclick="">Overfitting</button>
-    <button class="btn btn-primary" onclick="">Best Fit</button>
+  <div class="section">
+    <span class="d-flex">
+      <h5>Model</h5>
+      <button type="button" class="btn btn-outline-primary btn-sm ms-auto" data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Choose model parameters from available presets by clicking on preset available or set individual parameters. To create model and visualize model parameters click 'Create Model'">
+        ?
+      </button>
+    </span>
+    <div class="mb-3">
+      <div>
+        <a class="link-primary" onclick="handlePresetsUnderFitting()">Underfitting</a>
+        <a class="link-primary ms-1" onclick="handlePresetsOverFitting()">Overfitting</a>
+        <a class="link-primary ms-1" onclick="handlePresetsBestFit()">Best Fit</a>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="hiddenLayers" class="form-label">Hidden layers</label>
+      <input type="number" class="form-control" id="hiddenLayers" onchange="handleHiddenLayersChange()">
+    </div>
+    <div class="mb-3">
+      <label for="neuronsPerLayer" class="form-label">Neurons per layer</label>
+      <input type="number" class="form-control" id="neuronsPerLayer" onchange="handleNeuronsChange()">
+    </div>
+    <div class="mb-3">
+      <label for="activationFunction" class="form-label">Activation function</label>
+      <select id="activationFunction" class="form-select">
+        <option selected>Choose activation function</option>
+        <option value="relu">Relu</option>
+        <option value="any">Any</option>
+        <option value="other">other</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" onclick="create()">Create Model</button>
+    </div>
   </div>
 
-  <div class="mb-3">
-    <label for="batchSize" class="form-label">Batch Size</label>
-    <input type="number" class="form-control" id="batchSize" onchange="handleBatchSizeChange()">
+  <div class="section">
+    <span class="d-flex">
+      <h5>Train & Test</h5>
+      <button type="button" class="btn btn-outline-primary btn-sm ms-auto" data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Keep number of epochs from model preset or set individual number of epochs. To start training click 'Train Model'. To test model click 'Test Model'. For testing different samples, switch number of samples">
+        ?
+      </button>
+    </span>
+    <div class="mb-3">
+      <label for="epochs" class="form-label">Epochs</label>
+      <input type="number" class="form-control" id="epochs" onchange="handleEpochsChange()">
+    </div>
+    <button class="btn btn-primary" onclick="train()">Train Model</button>
+
+    <button class="btn btn-primary" onclick="test()">Test Model</button>
   </div>
-  <div class="mb-3">
-    <label for="epochs" class="form-label">Epochs</label>
-    <input type="number" class="form-control" id="epochs" onchange="handleEpochsChange()">
-  </div>
-  <button class="btn btn-primary" onclick="train()">Train Model</button>
-
-
-  <input type="number" id="myNumber" value="2" onchange="handleChange()" />
-  <button class="btn btn-primary" onclick="test()">Test Model</button>
-
 
   <script src="script.js"></script>
 
