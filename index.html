@@ -18,7 +18,7 @@
 
 <body>
   <!-- Import the main  onchange="handleChange()"script file -->
-  <h1 class="fs-2 mt-2">Regression using a Feed Forward Neural Network</h1>
+  <h1 class="fs-2 ms-1 mt-2">Regression using a Feed Forward Neural Network</h1>
 
   <div id="numberOfSamples" class="section">
     <span class="d-flex">
@@ -112,6 +112,59 @@
     <button class="btn btn-primary" onclick="train()">Train Model</button>
 
     <button class="btn btn-primary" onclick="test()">Test Model</button>
+  </div>
+
+  <div class="section">
+    <h5>Experiments & Results</h5>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Samples</th>
+          <th scope="col">Layers</th>
+          <th scope="col">Neurons</th>
+          <th scope="col">Activation</th>
+          <th scope="col">Epochs</th>
+          <th scope="col">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>200</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>  
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>  
+          <td>2</td>  
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>  
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>3</td>
+          <td>3</td>
+          <td>3</td>
+          <td>3</td>  
+          <td>3</td>  
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>  
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script src="script.js"></script>

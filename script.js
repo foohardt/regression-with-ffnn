@@ -28,12 +28,12 @@ const OVER_FITTING = {
 
 const BEST_FIT = {
   model: {
-    hiddenLayers: 4,
-    neuronsPerLayer: 8,
+    hiddenLayers: 6,
+    neuronsPerLayer: 32,
     activationFunction: "relu",
   },
   training: {
-    epochs: 20,
+    epochs: 100,
     optimizer: "adam",
   },
 };
@@ -141,19 +141,20 @@ function handlePresetsBestFit() {
 }
 
 function handleHiddenLayersChange() {
-  hiddenLayers = document.getElementById("hiddenLayers").value;
+  hiddenLayers = +document.getElementById("hiddenLayers").value;
 }
 
 function handleNeuronsChange() {
-  neuronsPerLayer = document.getElementById("neuronsPerLayer").value;
+  neuronsPerLayer = +document.getElementById("neuronsPerLayer").value;
+  console.log(neuronsPerLayer)
 }
 
 function handleBatchSizeChange() {
-  batchSize = document.getElementById("batchSize").value;
+  batchSize = +document.getElementById("batchSize").value;
 }
 
 function handleEpochsChange() {
-  epochs = document.getElementById("epochs").value;
+  epochs = +document.getElementById("epochs").value;
 }
 
 /**
@@ -198,7 +199,7 @@ function createModel() {
   model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
 
   for (let i = 0; i < hiddenLayers; i++) {
-    model.add(tf.layers.dense({ units: 32, activation: "relu" }));
+    model.add(tf.layers.dense({ units: neuronsPerLayer, activation: "relu" }));
   }
 
   // Add an output layer
