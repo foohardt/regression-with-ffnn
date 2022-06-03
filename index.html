@@ -84,11 +84,10 @@
     </div>
     <div class="mb-3">
       <label for="activationFunction" class="form-label">Activation function</label>
-      <select id="activationFunction" class="form-select">
-        <option selected>Choose activation function</option>
+      <select id="activationFunction" class="form-select" onchange="handleActivationFunctionChange()">
+        <option selected disabled>Choose activation function</option>
         <option value="relu">Relu</option>
-        <option value="any">Any</option>
-        <option value="other">other</option>
+        <option value="softmax">Softmax</option>
       </select>
     </div>
     <div class="mb-3">
@@ -116,6 +115,10 @@
 
   <div class="section">
     <h5>Experiments & Results</h5>
+    <p>Using softmax activation function it was not possible
+      to move mse beneath 0.4 independently of sample or model parameters.
+      Hence in all further experiments Relu is used as activation function.
+    </p>
 
     <table class="table">
       <thead>
@@ -126,42 +129,174 @@
           <th scope="col">Neurons</th>
           <th scope="col">Activation</th>
           <th scope="col">Epochs</th>
-          <th scope="col">Result</th>
+          <th scope="col">Results</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>200</td>
+          <td>5</td>
+          <td>2</td>
+          <td>6</td>
+          <td>Relu</td>
+          <td>100</td>
           <td>
             <img class="result-img" src="./img/test.png" alt="">
-          </td>  
+          </td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>  
-          <td>2</td>  
+          <td>5</td>
+          <td>6</td>
+          <td>12</td>
+          <td>Relu</td>
+          <td>150</td>
           <td>
             <img class="result-img" src="./img/test.png" alt="">
-          </td>  
+          </td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>3</td>
-          <td>3</td>
-          <td>3</td>
-          <td>3</td>  
-          <td>3</td>  
+          <td>5</td>
+          <td>12</td>
+          <td>32</td>
+          <td>Relu</td>
+          <td>200</td>
           <td>
             <img class="result-img" src="./img/test.png" alt="">
-          </td>  
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>10</td>
+          <td>2</td>
+          <td>6</td>
+          <td>Relu</td>
+          <td>100</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>10</td>
+          <td>6</td>
+          <td>12</td>
+          <td>Relu</td>
+          <td>150</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>10</td>
+          <td>12</td>
+          <td>32</td>
+          <td>Relu</td>
+          <td>200</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>20</td>
+          <td>2</td>
+          <td>6</td>
+          <td>Relu</td>
+          <td>100</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>20</td>
+          <td>6</td>
+          <td>12</td>
+          <td>Relu</td>
+          <td>150</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>20</td>
+          <td>12</td>
+          <td>32</td>
+          <td>Relu</td>
+          <td>200</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>50</td>
+          <td>2</td>
+          <td>6</td>
+          <td>Relu</td>
+          <td>100</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>50</td>
+          <td>6</td>
+          <td>12</td>
+          <td>Relu</td>
+          <td>150</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>50</td>
+          <td>12</td>
+          <td>32</td>
+          <td>Relu</td>
+          <td>200</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>100</td>
+          <td>2</td>
+          <td>6</td>
+          <td>Relu</td>
+          <td>100</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>100</td>
+          <td>6</td>
+          <td>12</td>
+          <td>Relu</td>
+          <td>150</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>100</td>
+          <td>12</td>
+          <td>32</td>
+          <td>Relu</td>
+          <td>200</td>
+          <td>
+            <img class="result-img" src="./img/test.png" alt="">
+          </td>
         </tr>
       </tbody>
     </table>

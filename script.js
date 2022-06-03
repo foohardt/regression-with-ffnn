@@ -146,7 +146,12 @@ function handleHiddenLayersChange() {
 
 function handleNeuronsChange() {
   neuronsPerLayer = +document.getElementById("neuronsPerLayer").value;
-  console.log(neuronsPerLayer)
+  console.log(neuronsPerLayer);
+}
+
+function handleActivationFunctionChange() {
+  let selected = document.getElementById("activationFunction");
+  activationFunction = selected.value;
 }
 
 function handleBatchSizeChange() {
@@ -197,9 +202,11 @@ function createModel() {
 
   // Add a single input layer
   model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
-
+  console.log("create model with activation function: " + activationFunction)
   for (let i = 0; i < hiddenLayers; i++) {
-    model.add(tf.layers.dense({ units: neuronsPerLayer, activation: "relu" }));
+    model.add(
+      tf.layers.dense({ units: neuronsPerLayer, activation: activationFunction })
+    );
   }
 
   // Add an output layer
