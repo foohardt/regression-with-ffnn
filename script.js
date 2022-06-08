@@ -29,11 +29,11 @@ const OVER_FITTING = {
 const BEST_FIT = {
   model: {
     hiddenLayers: 6,
-    neuronsPerLayer: 32,
+    neuronsPerLayer: 12,
     activationFunction: "relu",
   },
   training: {
-    epochs: 100,
+    epochs: 180,
     optimizer: "adam",
   },
 };
@@ -113,8 +113,11 @@ function handlePresetsUnderFitting() {
     UNDER_FITTING.model.hiddenLayers;
   document.getElementById("neuronsPerLayer").value =
     UNDER_FITTING.model.neuronsPerLayer;
+  document.getElementById("activationFunction").value =
+    UNDER_FITTING.model.activationFunction;
   document.getElementById("epochs").value = UNDER_FITTING.training.epochs;
   hiddenLayers = UNDER_FITTING.model.hiddenLayers;
+  activationFunction = UNDER_FITTING.model.activationFunction;
   neuronsPerLayer = UNDER_FITTING.model.neuronsPerLayer;
   epochs = UNDER_FITTING.training.epochs;
 }
@@ -124,9 +127,12 @@ function handlePresetsOverFitting() {
     OVER_FITTING.model.hiddenLayers;
   document.getElementById("neuronsPerLayer").value =
     OVER_FITTING.model.neuronsPerLayer;
+  document.getElementById("activationFunction").value =
+    OVER_FITTING.model.activationFunction;
   document.getElementById("epochs").value = OVER_FITTING.training.epochs;
   hiddenLayers = OVER_FITTING.model.hiddenLayers;
   neuronsPerLayer = OVER_FITTING.model.neuronsPerLayer;
+  activationFunction = OVER_FITTING.model.activationFunction;
   epochs = OVER_FITTING.training.epochs;
 }
 
@@ -134,10 +140,14 @@ function handlePresetsBestFit() {
   document.getElementById("hiddenLayers").value = BEST_FIT.model.hiddenLayers;
   document.getElementById("neuronsPerLayer").value =
     BEST_FIT.model.neuronsPerLayer;
+  document.getElementById("activationFunction").value =
+    BEST_FIT.model.activationFunction;
   document.getElementById("epochs").value = BEST_FIT.training.epochs;
   hiddenLayers = BEST_FIT.model.hiddenLayers;
   neuronsPerLayer = BEST_FIT.model.neuronsPerLayer;
+  activationFunction = BEST_FIT.model.activationFunction;
   epochs = BEST_FIT.training.epochs;
+  activationFunction;
 }
 
 function handleHiddenLayersChange() {
@@ -222,7 +232,7 @@ function create() {
   tfvis.show.modelSummary({ name: "Model Summary" }, model);
   const saveButton = document.getElementById("saveModelButton");
   saveButton.disabled = false;
-  console.info("Saved model to local storage")
+  console.info("Saved model to local storage");
 }
 
 async function save() {
