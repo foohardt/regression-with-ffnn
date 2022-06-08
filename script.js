@@ -146,7 +146,6 @@ function handleHiddenLayersChange() {
 
 function handleNeuronsChange() {
   neuronsPerLayer = +document.getElementById("neuronsPerLayer").value;
-  console.log(neuronsPerLayer);
 }
 
 function handleActivationFunctionChange() {
@@ -180,7 +179,7 @@ function renderData(data) {
 }
 
 /**
- * Creation, training and testing of model
+ * Creation, saving, loading, training and testing of model
  */
 
 // Model parameters
@@ -202,35 +201,38 @@ function createModel() {
 
   // Add a single input layer
   model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
-  console.log("create model with activation function: " + activationFunction)
+  console.info("create model with activation function: " + activationFunction);
   for (let i = 0; i < hiddenLayers; i++) {
     model.add(
-      tf.layers.dense({ units: neuronsPerLayer, activation: activationFunction })
+      tf.layers.dense({
+        units: neuronsPerLayer,
+        activation: activationFunction,
+      })
     );
   }
 
   // Add an output layer
   model.add(tf.layers.dense({ units: 1, useBias: true }));
 
-  /*   model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" }));
-  model.add(tf.layers.dense({ units: 32, activation: "relu" })); */
-
   return model;
 }
 
 function create() {
   model = createModel();
+  tfvis.show.modelSummary({ name: "Model Summary" }, model);
+  const saveButton = document.getElementById("saveModelButton");
+  saveButton.disabled = false;
+  console.info("Saved model to local storage")
+}
+
+async function save() {
+  await model.save("localstorage://my-model");
+  const loadButton = document.getElementById("loadModelButton");
+  loadButton.disabled = false;
+}
+
+async function load() {
+  model = await tf.loadLayersModel("localstorage://my-model");
   tfvis.show.modelSummary({ name: "Model Summary" }, model);
 }
 

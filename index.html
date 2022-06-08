@@ -90,8 +90,16 @@
         <option value="softmax">Softmax</option>
       </select>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 d-flex">
       <button class="btn btn-primary" onclick="create()">Create Model</button>
+      <button id="saveModelButton" class="btn btn-secondary ms-1" onclick="save()" disabled>Save Model</button>
+      <button id="loadModelButton" class="btn btn-secondary ms-1" onclick="load()" disabled>Load Model</button>
+      <span class="ms-auto">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+          title="When model has been created click 'Save Model' to save model topology and weights to browser local storage. Click again to overwrite existing model. Click 'Load Model' to load last saved model">
+          ?
+        </button>
+      </span>
     </div>
   </div>
 
