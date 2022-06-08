@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains an experimental simulator for 2D regression using a feed-forward neural network.
+This repository contains an experimental simulator for 2D regression using a feed-forward neural network. It can be used to create, train and evaluate models on a given set of data created from y(x) = (x+0.8)*(x-0.2)*(x-0.3)*(x-0.6) in interval [-1,+1]. 
 
 ## Usage
 
