@@ -45,3 +45,15 @@ line 73 | Loop to create sample data n from N from given function. Creates x and
 line 87| Loop to add gaussian noise to each y of n from N |
 
 #### Model Creation, Training und Evaluation
+
+Name | Description |
+--- | --- | 
+create() | Helper function to call createModel() on user interaction and to provide user feedback and visualization |
+train() | Helper function to create tensor data and to call trainModel() on user interaction and to provide user feedback and visualization |
+test() | Helper function to call testModel() on user interaction |
+save () | Helper function to save model topology and weights to browser local storage and to provide user feedback |
+load() | Helper function to load model topology and weights from browser local storage to visualize loaded model |
+createModel() | Creates model based on given parameters hidden layers, neurons per layer and activation function  |
+convertToTensor(data) | Creates tensor data from sampled data used to train model |
+trainModel() | Used to compile and fit model on input data provided |
+testModel() | Used to evaluate fitted model on given data |
