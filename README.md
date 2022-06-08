@@ -32,5 +32,16 @@ Name | Description | Reference |
 | Tensorflow.js | Tensorflow.js makes deep learning available in the browser or within Node.js. In this project it used for model creating, persistence, training and evaluation | https://www.tensorflow.org/js |
 | Tensorflow.js VIS| Tensorflow.js VIS is a library to create UI helpers to be used with tensorflow.js. Within this project it is used for visualization of data, model, training and evaluation | https://js.tensorflow.org/api_vis/latest/|
 
+### Functions
+#### Data Sampling
 
-## Experiments & Results
+Name | Description |
+--- | --- | 
+getUniformDistributedRandomNumber(min, max) | Creates uniform distributed number in interval |
+addGaussianNoise(y, mean, variance) | Adds gaussian noise to y value |
+calcSum(array) | Helper function to calculate sum for array of numbers |
+calcMean(array) | Helper function to calculate mean for array of numbers |
+line 73 | Loop to create sample data n from N from given function. Creates x and y values. Stores results in sampled array  |
+line 87| Loop to add gaussian noise to each y of n from N |
+
+#### Model Creation, Training und Evaluation
