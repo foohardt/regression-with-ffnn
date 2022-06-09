@@ -19,14 +19,16 @@
 <body>
   <!-- Import the main  onchange="handleChange()"script file -->
   <div class="d-flex align-items-baseline">
-  <h1 class="fs-2 ms-1 mt-2">Regression using a Feed Forward Neural Network</h1>
-  <a href="https://github.com/foohardt/regression-with-ffnn/blob/main/README.md" target="_blank" class="link-primary ms-auto">Documentation</a>
-</div>
+    <h1 class="fs-2 ms-1 mt-2">Regression using a Feed Forward Neural Network</h1>
+    <a href="https://github.com/foohardt/regression-with-ffnn/blob/main/README.md" target="_blank"
+      class="link-primary ms-auto">Documentation</a>
+  </div>
   <div id="numberOfSamples" class="section">
     <span class="d-flex">
       <h5>Samples</h5>
       <button type="button" class="btn btn-outline-primary btn-sm ms-auto" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Click number of samples to visualize and select data for training and testing. Data is sampled from y(x) = (x+0.8)(x-0.2)(x-0.3)*(x-0.6) in interval [-1,+1]">
+        data-bs-placement="top"
+        title="Click number of samples to visualize and select data for training and testing. Data is sampled from y(x) = (x+0.8)(x-0.2)(x-0.3)*(x-0.6) in interval [-1,+1]">
         ?
       </button>
     </span>
@@ -125,6 +127,16 @@
 
   <div class="section">
     <h5>Experiments & Results</h5>
+    <p>
+      in the following experiments, models with different parameters were applied to data sets with n of N samples each.
+      In addition, the number of epochs was continuously increased. For each series of n of N samples, the training and
+      test data were not changed to reveal the effects of changing the model and training parameters.
+    </p>
+    <p>As a conclusion, it can be observed that, on the one hand, low model complexity leads to high variance in model
+      predictions. The model is underfitted. This effect can be observed independently of the number of iterations of
+      the training. On the other hand, an increasing model complexity in combination with an increase in the number of
+      training iterations leads to an increased model bias. The model is overfitted.
+    </p>
     <p>All experiments were performed using acitvation function relu.</p>
 
     <table class="table">
