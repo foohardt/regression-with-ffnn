@@ -18,13 +18,15 @@
 
 <body>
   <!-- Import the main  onchange="handleChange()"script file -->
+  <div class="d-flex align-items-baseline">
   <h1 class="fs-2 ms-1 mt-2">Regression using a Feed Forward Neural Network</h1>
-
+  <a href="https://github.com/foohardt/regression-with-ffnn/blob/main/README.md" target="_blank" class="link-primary ms-auto">Documentation</a>
+</div>
   <div id="numberOfSamples" class="section">
     <span class="d-flex">
       <h5>Samples</h5>
       <button type="button" class="btn btn-outline-primary btn-sm ms-auto" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Click number of samples to visualize and select data for training and testing">
+        data-bs-placement="top" title="Click number of samples to visualize and select data for training and testing. Data is sampled from y(x) = (x+0.8)(x-0.2)(x-0.3)*(x-0.6) in interval [-1,+1]">
         ?
       </button>
     </span>
