@@ -5,7 +5,6 @@
 This repository contains an experimental simulator for 2D regression using a feed-forward neural network. It can be used to create, train and evaluate models on a given set of data created from y(x) = (x+0.8)*(x-0.2)*(x-0.3)*(x-0.6) in interval [-1,+1]. 
 
 ## Usage
-
 - Open <a href="http://public.beuth-hochschule.de/~s85393/deep-learning/regression-with-ffnn/" target="_blank" rel="noopener noreferrer">regression with ffnn</a> in web browser
 - Select number of samples to be used for training and testing
 - Set network paramaters or use presets available and click `Create Model`
@@ -13,6 +12,14 @@ This repository contains an experimental simulator for 2D regression using a fee
 - When training is finished click `Test Model` to test model on samples selected
 - If you want to test the model on a different number of samples change number of samples accordingly and click `Test Model` again
 - Try out different model and training parameters and see results
+
+### Saving & Loading Models
+When a model has been created and trained the model topology and its weights can be saved to the browsers local storage. To save and load a model:
+- Create and train model
+- Click `Save Model` in the model section
+- Click `Load Model` in the model section
+
+This function can be helpful if you want save a certain model for later and want to try out different model topologies. If you save a model which has not been trained, only the model topology is saved.
 
 ## Technical Documentation
 
